@@ -19,9 +19,12 @@
 |---|---|---|
 | ![로그인](docs/screenshots/01_login.png) | ![홈](docs/screenshots/03_home.png) | ![작품 상세](docs/screenshots/08_book_detail.png) |
 
-| 오픈 채팅방 목록 | 작품 등록 | 프로필 |
+| 오픈 채팅방 목록 | 채팅 (Raw TCP) | 프로필 |
 |---|---|---|
-| ![채팅방](docs/screenshots/05_chat_rooms.png) | ![작품 등록](docs/screenshots/04_write_new_book.png) | ![프로필](docs/screenshots/07_profile.png) |
+| ![채팅방](docs/screenshots/05_chat_rooms.png) | ![실시간 채팅](docs/screenshots/09_chat_realtime.png) | ![프로필](docs/screenshots/07_profile.png) |
+
+채팅 화면의 아래 세 메시지는 **2026-09-04 에 실제로 주고받은 것**입니다. 그 위는 2024년 이력이고,
+가운데 날짜 구분선이 둘을 나눕니다.
 
 > 2026-09-04, Android API 36 에뮬레이터에서 실제 서버에 접속해 촬영했습니다.
 > 프로필 화면의 이메일은 가렸습니다.
@@ -112,7 +115,13 @@ app/src/main/java/com/example/ourbook/Constants.java          SERVER_IP · SERVE
 
 ### `ChatListenService` 는 프로토타입입니다
 
-백그라운드 메시지 수신 서비스를 만들다 멈춘 상태입니다. **시작을 호출하는 곳이 없고**, 내부에서 `startListeningForMessages(null)` 을 호출합니다. 채팅은 화면이 떠 있는 동안에만 실시간으로 동작하고, 그 외에는 FCM 푸시가 대신합니다.
+백그라운드 메시지 수신 서비스를 만들다 멈춘 상태입니다. **시작을 호출하는 곳이 없고**, 내부에서 `startListeningForMessages(null)` 을 호출합니다.
+
+**채팅방 화면이 떠 있는 동안의 실시간 송수신은 동작합니다** (2026-09-04 실측). 그 외 상황에서는 FCM 푸시가 대신합니다. 백그라운드 소켓 유지는 미구현입니다.
+
+### 자기가 보낸 메시지는 화면이 즉시 갱신되지 않습니다
+
+전송은 성공하고 서버에 저장되지만(FCM 응답으로 확인), 보낸 사람의 RecyclerView 가 바로 갱신되지 않습니다. 방을 다시 들어가면 보입니다.
 
 ### 서버 주소가 소스에 하드코딩돼 있습니다
 
