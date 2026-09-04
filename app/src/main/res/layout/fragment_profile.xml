@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile.ProfileFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="@string/hello_blank_fragment" />-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_marginTop="50dp"
+            android:maxHeight="50dp"
+
+            android:src="@drawable/ic_launcher_background"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="사용자 이름"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.518"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_profile" />
+
+        <TextView
+            android:id="@+id/textView_userEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+
+            android:text="사용자 이메일"
+            app:layout_constraintBottom_toTopOf="@+id/profile_imageChange_textButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.539"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_username"
+            app:layout_constraintVertical_bias="0.008" />
+
+        <TextView
+            android:id="@+id/indicator_text_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:text="이메일 :"
+            app:layout_constraintBottom_toTopOf="@+id/profile_imageChange_textButton"
+            app:layout_constraintEnd_toStartOf="@+id/textView_userEmail"
+            app:layout_constraintHorizontal_bias="0.939"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/indicator_text_name"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/indicator_text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="8dp"
+            android:text="닉네임 :"
+            app:layout_constraintEnd_toStartOf="@+id/textView_username"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_profile" />
+
+        <TextView
+            android:id="@+id/profile_imageChange_textButton"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_marginBottom="12dp"
+            android:text="프로필 이미지 변경"
+            app:layout_constraintBottom_toTopOf="@+id/edit_name_textButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/user_delete_textButton"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_marginBottom="5dp"
+            android:text="회원 탈퇴"
+            app:layout_constraintBottom_toTopOf="@+id/user_log_out_textButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/password_change_textButton"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_marginBottom="12dp"
+            android:text="비밀번호 변경"
+            app:layout_constraintBottom_toTopOf="@+id/user_delete_textButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/edit_name_textButton"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_marginBottom="4dp"
+            android:text="닉네임 변경"
+            app:layout_constraintBottom_toTopOf="@+id/password_change_textButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/user_log_out_textButton"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_marginBottom="4dp"
+            android:text="로그아웃"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

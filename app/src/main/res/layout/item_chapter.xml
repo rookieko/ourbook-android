@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30sp"
+    android:layout_margin="10sp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- 회차 번호 -->
+    <TextView
+        android:text="@string/chapter_string"
+        android:id="@+id/item_number_chapter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline1"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        app:layout_constraintGuide_percent="0.2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"/>
+    <!--회차 제목 , 이름 -->
+    <TextView
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        android:text="@string/title_text"
+        android:gravity="center"
+        android:id="@+id/item_textView_chapterName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+
+        app:layout_constraintGuide_percent="0.8"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"/>
+    <!-- 열람 정보 -->
+    <ImageView
+        android:id="@+id/item_imageView_info_chapter"
+        android:src="@drawable/info_solid"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

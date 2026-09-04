@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".writeActivity.BookTitleInputActivity">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/M_Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:title="제목 변경"
+        app:titleTextColor="@color/white"
+
+        app:subtitleTextColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:navigationIcon="@drawable/outline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/book_title_inputLayout"
+        app:layout_constraintVertical_bias="0.2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/M_Toolbar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/book_title_inputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibm_plex_sans"
+            android:hint="@string/title_input_hint"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/book_title_checkButton"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.8"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintHorizontal_weight="0.5"
+        android:text="@string/agree"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/book_title_inputLayout" />
+
+    <TextView
+        android:id="@+id/textView_inputIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:fontFamily="@font/ibm_plex_sans_medium"
+        android:text="@string/title_text"
+        android:textFontWeight="700"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/book_title_inputLayout"
+        app:layout_constraintStart_toStartOf="@+id/book_title_inputLayout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

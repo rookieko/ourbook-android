@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginTop="16dp">
+    <!--
+    card view 속성
+    android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+    -->
+    <androidx.cardview.widget.CardView
+        android:foregroundGravity="center_horizontal"
+        android:backgroundTint="@color/gray_trans"
+        android:id="@+id/layout_chat_date_other"
+        android:visibility="gone"
+        android:layout_marginTop="32dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:paddingHorizontal="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            
+    <TextView
+        android:padding="5sp"
+        android:id="@+id/text_chat_date_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="June 10"
+        android:textColor="#030F14"
+         />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:foregroundGravity="center_horizontal"
+        android:backgroundTint="@color/gray_trans"
+        android:id="@+id/layout_chat_notification_other"
+        android:layout_marginTop="32dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_chat_date_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <LinearLayout
+            android:paddingHorizontal="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:padding="5sp"
+                android:id="@+id/text_chat_notification_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="닉네임 입장하였습니다"
+                android:textColor="#030F14"
+                />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_chat_message_other"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_chat_date_other"
+        android:layout_marginVertical="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+
+    <ImageView
+        android:src="@drawable/outline_account_circle_24"
+        android:id="@+id/image_chat_profile_other"
+        android:maxHeight="24dp"
+        android:maxWidth="24dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="User Icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_chat_user_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="John Grady Cole"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/image_chat_profile_other"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_chat_message_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#eef1f6"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintStart_toEndOf="@+id/image_chat_profile_other"
+        app:layout_constraintTop_toBottomOf="@+id/text_chat_user_other">
+
+        <LinearLayout
+            android:id="@+id/layout_gchat_container_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_chat_message_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:maxWidth="260dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="8dp"
+                android:paddingRight="12dp"
+                android:text="Message"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <TextView
+        android:textColor="@color/red_message"
+        android:text="@string/sample_number"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_chat_time_other"
+        android:id="@+id/number_peopleLook_other"
+        app:layout_constraintStart_toEndOf="@+id/card_chat_message_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+<!--    <TextView-->
+<!--        android:textColor="@color/orange"-->
+<!--        android:text="@string/sample_number"-->
+<!--        android:textSize="14sp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/text_chat_time_other"-->
+<!--        android:id="@+id/number_peopleLook_other"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/card_chat_message_other"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+    <TextView
+        android:id="@+id/text_chat_time_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8:00"
+        android:textColor="@color/gray"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/card_chat_message_other"
+        app:layout_constraintStart_toEndOf="@+id/card_chat_message_other" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

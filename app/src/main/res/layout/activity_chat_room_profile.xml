@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--    /* 채팅방 정보 액티비티 , 채팅방을 검색하고 선택시 보여지는 액티비티
+    *  이후 채팅방 입장 버튼 입력시 채팅방 입장 단 비밀번호 설정이 된 경우 입력 확인 */-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ivory"
+    tools:context=".Chat.ChatRoomProfileActivity">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/mtoolBar_ChatRoomProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:navigationIcon="@drawable/arrow_left_solid"
+        android:gravity="center_vertical"
+        app:titleCentered="true"
+        app:title="@string/chat_room_info"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        />
+    <com.google.android.material.card.MaterialCardView
+        android:layout_margin="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100sp"
+        app:layout_constraintTop_toBottomOf="@id/mtoolBar_ChatRoomProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+         <ImageView
+             app:layout_constraintHeight_percent="0.8"
+             app:layout_constraintWidth_percent="0.2"
+             android:id="@+id/ChatRoom_BookCoverImage"
+             app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             android:src="@drawable/sample_bookcover"
+              android:layout_height="120sp"
+             android:layout_width="0dp"
+             />
+            <TextView
+                android:textSize="12dp"
+                android:id="@+id/ChatRoom_WebNovelInfo"
+                android:text="@string/chat_novel_tag"
+                android:layout_margin="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ChatRoom_BookCoverImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textSize="16sp"
+                android:layout_margin="10sp"
+                android:id="@+id/ChatRoom_NameInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chat_room_name"
+                app:layout_constraintEnd_toEndOf="@id/ChatRoom_WebNovelInfo"
+
+                app:layout_constraintStart_toStartOf="@id/ChatRoom_WebNovelInfo"
+                app:layout_constraintTop_toBottomOf="@id/ChatRoom_WebNovelInfo" />
+
+            <TextView
+                android:layout_margin="10sp"
+                android:text="@string/chat_room_introduce"
+                app:layout_constraintTop_toBottomOf="@id/ChatRoom_NameInfo"
+                app:layout_constraintStart_toStartOf="@id/ChatRoom_WebNovelInfo"
+                app:layout_constraintEnd_toEndOf="@id/ChatRoom_WebNovelInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ChatRoom_Introduce"/>
+            <!--상세 정보 , 날짜 , 인원수-->
+            <TextView
+                android:text="@string/chat_room_info"
+                android:layout_margin="10sp"
+                app:layout_constraintTop_toBottomOf="@id/ChatRoom_Introduce"
+                app:layout_constraintStart_toStartOf="@id/ChatRoom_Introduce"
+                app:layout_constraintEnd_toEndOf="@id/ChatRoom_Introduce"
+                android:id="@+id/ChatRoom_DetailInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+
+                android:layout_margin="30sp"
+                android:text="@string/chat_room_join"
+                app:layout_constraintTop_toBottomOf="@id/ChatRoom_DetailInfo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/ChatRoom_JoinBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

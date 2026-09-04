@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="100sp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageView_bookCover"
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:src="@drawable/outline_books_24"/>
+
+    <TextView
+        android:justificationMode="inter_word"
+
+        android:id="@+id/textView_bookTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ibm_plex_sans_medium"
+        android:textFontWeight="700"
+        android:text="@string/title_text" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/category_text"
+            android:id="@+id/textView_bookCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:id="@+id/textView_writerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="작가명" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Chat.ChatRoomActivity">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mtoolBar_ChatRoom"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        app:navigationIcon="@drawable/arrow_left_solid"
+        app:menu="@menu/menu_in_chatroom"
+        app:title="@string/chat_room"
+        app:titleCentered="true"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_chatRoom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#EDE7F6"
+        android:orientation="vertical"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toTopOf="@id/chatRoom_input_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mtoolBar_ChatRoom"
+        tools:itemCount="12"
+        tools:listitem="@layout/item_chat_other" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/chatRoom_input_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="10dp"
+        android:maxHeight="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:background="@color/ivory"
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+            <!-- 첨부 파일 이미지 추가 버튼 -->
+            <ImageButton
+                android:visibility="invisible"
+                android:background="?attr/selectableItemBackground"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/outline_add_24"
+                android:id="@+id/add_file_Btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="@string/image_from_gallery" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/chat_input_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button_chat_send"
+                app:layout_constraintStart_toEndOf="@+id/add_file_Btn"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/chat_input"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/chat_input"
+                    android:inputType="textMultiLine"
+                    android:gravity="top"
+                    android:scrollbars="vertical"
+                    android:maxHeight="150dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                android:src="@drawable/outline_send_mail_24"
+                android:id="@+id/button_chat_send"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@drawable/message_btn_selector"
+                android:textColor="@color/main_violet"
+                android:contentDescription="@string/chat_send" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

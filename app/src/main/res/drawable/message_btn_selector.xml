@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <!-- res/drawable/button_selector.xml -->
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+        <!-- 버튼이 활성화된 상태 -->
+        <item android:state_activated="true" android:color="@color/ivory"/> <!-- 빨간색 -->
+        <!-- 버튼이 비활성화된 상태 -->
+        <item android:state_activated="false" android:color="@color/gray_light"/> <!-- 초록색 -->
+    </selector>

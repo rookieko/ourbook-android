@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/item_imageView_bookCover"
+        android:layout_width="0dp"
+        android:layout_height="100sp"
+        android:layout_margin="10sp"
+        android:src="@drawable/sample_bookcover"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="120sp"/>
+
+    <TextView
+        android:layout_marginVertical="5sp"
+        android:id="@+id/item_textView_bookTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textFontWeight="600"
+        android:textSize="17sp"
+        android:text="@string/title_text"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_marginVertical="5sp"
+        android:textSize="12sp"
+        android:id="@+id/item_textView_writerName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="작가명"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_textView_bookTitle"/>
+    <TextView
+        android:layout_marginVertical="5sp"
+        android:textSize="12sp"
+        android:id="@+id/item_explore_textView_categoryName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_category_text"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_textView_writerName"/>
+    <TextView
+        android:layout_marginVertical="5sp"
+        android:textSize="12sp"
+        android:id="@+id/item_explore_textView_createdDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_date_text"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_explore_textView_categoryName"/>
+
+    <TextView
+
+        android:textSize="12sp"
+        android:layout_marginVertical="5sp"
+        android:text="조회수"
+        android:id="@+id/item_explore_textView_views"
+        app:layout_constraintWidth_percent="0.2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_explore_textView_createdDate"/>
+
+    <TextView
+        android:textSize="12sp"
+        android:layout_marginVertical="5sp"
+        app:layout_constraintWidth_percent="0.2"
+        android:text="@string/sample_chapter_string"
+        android:id="@+id/item_textView_chapterShow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/item_explore_textView_views"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_explore_textView_createdDate"/>
+    <com.google.android.material.divider.MaterialDivider
+        app:dividerColor="@color/gray"
+        android:layout_marginHorizontal="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

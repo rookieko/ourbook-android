@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tab_home"
+        android:enabled="true"
+        android:icon="@drawable/baseline_home_24"
+        android:title="홈"/>
+
+    <item
+        android:id="@+id/tab_library"
+        android:enabled="true"
+        android:icon="@drawable/outline_book_2_24"
+        android:title="라이브러리"/>
+    <item
+        android:id="@+id/tab_write"
+        android:enabled="true"
+        android:icon="@drawable/outline_write_square_24"
+        android:title="글쓰기"/>
+    <item
+        android:id="@+id/tab_chat"
+        android:enabled="true"
+        android:icon="@drawable/outline_chat_bubble_24"
+        android:title="채팅"/>
+    <item
+        android:id="@+id/tab_profile"
+        android:icon="@drawable/outline_account_circle_24"
+        android:title="프로필" />
+</menu>

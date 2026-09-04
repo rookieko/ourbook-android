@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- Android 13(API 33) 부터는 이 선언과 런타임 요청이 없으면 채팅 알림이 표시되지 않는다 -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.OurBook"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <service
+            android:name=".Chat.Service.ChatListenService"
+            android:enabled="true"
+            android:exported="false"></service>
+        <service
+            android:name=".Chat.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!--
+ Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/sample_bookcover" />
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/ivory" />
+
+        <activity
+            android:name=".Chat.ChatTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Chat.ChatRoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Chat.ChatRoomSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Chat.ChatRoomProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Chat.ChatRoomCreateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchNovelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChangeCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewInfoActivity"
+            android:exported="false" /> <!-- 중복으로 존재해서    <activity -->
+        <!-- android:name=".writeActivity.SummaryInputActivity" -->
+        <!-- android:exported="false" /> -->
+        <activity
+            android:name=".writeActivity.SummaryInputActivity"
+            android:exported="false"
+            android:label="@string/title_activity_summary_input"
+            android:theme="@style/Theme.OurBook" />
+        <activity
+            android:name=".exploreActivity.ReviewInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReadNovelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".exploreActivity.CategorySelectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".exploreActivity.ChapterShowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".exploreActivity.ExploreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".exploreActivity.CommentShowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".exploreActivity.BookInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainBook.BookDetailViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".setBookActivity.ChangeChapterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".setBookActivity.ChangeBookTitleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".setBookActivity.BookImageInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".setBookActivity.BookImageViewActivity"
+            android:exported="false"
+            android:label="@string/title_activity_book_image_view"
+            android:theme="@style/Theme.OurBook" />
+        <activity
+            android:name=".writeActivity.WriteChapterInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".writeActivity.WriteChapterMainActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".test.ToolbarTest" -->
+        <!-- android:exported="false" /> -->
+        <activity
+            android:name=".writeActivity.BookInfoSetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".writeActivity.BookTitleInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".writeActivity.WriteMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profile.ProfileImageViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profile.ProfileImageInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DataTool.Login.SplashActivity"
+            android:exported="true"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".DataTool.Login.UserPasswordChangeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profile.UserNameChangeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DataTool.Login.password_emailAuthActivity1"
+            android:exported="false" />
+        <activity
+            android:name=".DataTool.Login.password_emailAuthActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".DataTool.Login.login_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".DataTool.Login.Email_authActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DataTool.Login.Before_SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DataTool.Login.SignUpInputData_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".DataTool.Login.MainActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.ourbook.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider> <!-- <provider -->
+        <!-- android:name="androidx.core.content.FileProvider" -->
+        <!-- android:authorities="${applicationId}.provider" -->
+        <!-- android:exported="false" -->
+        <!-- android:grantUriPermissions="true"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
+        <!-- android:resource="@xml/file_paths" /> -->
+        <!-- </provider> -->
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="알림 설정"
+        android:icon="@drawable/bell_regular"
+        app:showAsAction="ifRoom"
+        android:id="@+id/item_chatRoom_notify"
+        />
+    <item
+        android:id="@+id/item_chatRoom_exit"
+        android:title="나가기"
+        />
+    <item
+        android:id="@+id/item_chatRoom_setting"
+        android:icon="@drawable/set_gear_icon"
+        android:title="설정.." />
+
+</menu>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15sp"
+    android:layout_marginVertical="3sp"
+    android:layout_marginHorizontal="10sp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:minHeight="100sp"-->
+<!--        app:cardCornerRadius="15sp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+    <LinearLayout
+        android:layout_marginVertical="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="120sp"
+        android:minHeight="100sp"
+        android:layout_marginHorizontal="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_margin="10sp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+                <TextView
+                    android:visibility="invisible"
+
+                    android:id="@+id/chapter_item_number"
+                    android:text="11"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:textFontWeight="700"
+                    android:fontFamily="@font/ibm_plex_sans_medium"
+                    android:layout_gravity="start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"/>
+                <TextView
+                    android:id="@+id/chapter_item_numberString"
+                    android:text="화"
+                    android:visibility="invisible"
+                    android:maxLines="1"
+                    android:textFontWeight="700"
+                    android:fontFamily="@font/ibm_plex_sans_medium"
+                    android:layout_gravity="start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            <TextView
+                android:layout_weight="2"
+                android:id="@+id/chapter_item_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibm_plex_sans_medium"
+                android:gravity="end"
+                android:maxLines="1"
+                android:text="@string/title_text"
+                android:textFontWeight="700"
+                android:textSize="20sp" />
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/chapter_item_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibm_plex_sans_medium"
+                android:gravity="end"
+                android:maxLines="1"
+                android:text="@string/summary_text" />
+        </LinearLayout>
+    </LinearLayout>
+<!--    </com.google.android.material.card.MaterialCardView>-->
+</androidx.cardview.widget.CardView>
