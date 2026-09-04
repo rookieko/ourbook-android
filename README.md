@@ -109,9 +109,11 @@ app/src/main/java/com/example/ourbook/Constants.java          SERVER_IP · SERVE
 
 하단 네비게이션에 항목은 있으나 `MainLoginActivity` 의 `setOnItemSelectedListener` 에 `R.id.tab_library` 분기가 없습니다. 탭해도 아무 일도 일어나지 않고 홈이 유지됩니다.
 
-### 작품 상세의 조회수가 값 대신 라벨을 표시합니다
+### 작품 상세의 조회수·평점이 채워지지 않습니다
 
-목록에서는 정상인데 상세 화면의 바인딩만 잘못됐습니다. 위 스크린샷에도 그대로 보입니다.
+바인딩 실수가 아니라 **구현하지 않은 것**입니다. `BookInfoActivity.java:208` 에
+`// TODO 조회수 , 점수` 주석이 있고 해당 TextView 를 설정하는 코드가 없어,
+레이아웃의 정적 라벨이 그대로 보입니다. 목록 화면에서는 정상 표시됩니다.
 
 ### `ChatListenService` 는 프로토타입입니다
 
