@@ -15,12 +15,17 @@
 
 ## 서버 주소를 먼저 바꾼다
 
-이 저장소에는 실제 주소가 들어 있지 않다. **두 곳**을 자신의 서버로 바꿔야 통신이 된다.
+이 저장소에는 실제 주소가 들어 있지 않다. **소스를 고치지 말고** `local.properties` 를 채운다.
 
-```text
-app/src/main/java/com/example/ourbook/DataTool/BaseUrl.java   BASE_URL
-app/src/main/java/com/example/ourbook/Constants.java          SERVER_IP · SERVER_PORT
+```bash
+cp local.properties.example local.properties   # ourbook.host / ourbook.ip / ourbook.port
 ```
+
+`build.gradle.kts` 의 `buildConfigField` 를 거쳐 `BuildConfig` 로 들어가고,
+`BaseUrl` 과 `Constants` 가 그것을 참조한다. **소스에 주소를 다시 박지 말 것.**
+
+**값이 없거나 키를 틀려도 빌드는 성공한다.** placeholder 로 APK 가 만들어질 뿐이라
+앱은 뜨는데 로그인만 안 된다. 그 증상이면 `local.properties` 부터 본다.
 
 레거시·테스트 파일에도 placeholder 주소가 남아 있으나 현재 경로에서 쓰이지 않는다.
 
