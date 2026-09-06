@@ -19,8 +19,9 @@ public final class Constants {
     public static final String INTENT_CHATROOM_USER_ID = "chatRoom_user_id";
     public static final String INTENT_CHATROOM_LAST_CHAT_ID = "last_chat_id";
 
-    public static final String SERVER_IP = "203.0.113.10";
-    public static final int SERVER_PORT = 6080;
+    // local.properties 의 ourbook.ip / ourbook.port 가 build.gradle.kts 를 거쳐 들어온다
+    public static final String SERVER_IP = BuildConfig.SERVER_IP;
+    public static final int SERVER_PORT = BuildConfig.SERVER_PORT;
 
 
 

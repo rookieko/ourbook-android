@@ -1,7 +1,10 @@
 package com.example.ourbook.DataTool;
 
+import com.example.ourbook.BuildConfig;
+
 public  class BaseUrl {
-    public static final String BASE_URL= "http://your-server-host.example.com/";
+    // local.properties 의 ourbook.host 가 build.gradle.kts 를 거쳐 들어온다
+    public static final String BASE_URL = BuildConfig.SERVER_HOST;
 
 
 

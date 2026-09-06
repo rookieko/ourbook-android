@@ -1,0 +1,17 @@
+# 이 파일을 local.properties 로 복사한 뒤 값을 자신의 서버로 바꾸세요.
+#
+#   cp local.properties.example local.properties
+#
+# local.properties 는 .gitignore 에 있어 커밋되지 않습니다.
+# Android Studio 가 sdk.dir 을 자동으로 넣어 주므로 아래 세 줄만 채우면 됩니다.
+#
+# 값을 비우거나 키 이름을 틀리면 빌드는 그대로 성공하고
+# app/build.gradle.kts 의 placeholder 로 APK 가 만들어집니다.
+# 앱이 뜨는데 로그인만 안 되면 여기부터 확인하세요.
+
+# PHP REST API 주소. 끝의 슬래시를 빼지 마세요 — 뒤에 경로가 붙습니다.
+ourbook.host=http://your-server-host.example.com/
+
+# Raw TCP 채팅 서버. 호스트명이 아니라 IP 입니다.
+ourbook.ip=203.0.113.10
+ourbook.port=6080

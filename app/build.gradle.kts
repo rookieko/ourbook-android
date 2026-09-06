@@ -1,4 +1,4 @@
-
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -12,6 +12,15 @@ if (file("google-services.json").exists()) {
     apply(plugin = "com.google.gms.google-services")
 }
 
+// local.properties 의 서버 주소를 BuildConfig 로 넘긴다.
+// 이 파일은 VCS 에 없으므로, 값이 빠지면 아래 placeholder 로 빌드된다.
+val ourbookProps = Properties().apply {
+    val f = rootProject.file("local.properties")
+    if (f.exists()) f.inputStream().use { load(it) }
+}
+fun ourbook(key: String, fallback: String): String =
+    (ourbookProps.getProperty(key) ?: fallback).trim()
+
 android {
     namespace = "com.example.ourbook"
     compileSdk = 34
@@ -24,6 +33,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "SERVER_HOST",
+            "\"" + ourbook("ourbook.host", "http://your-server-host.example.com/") + "\"")
+        buildConfigField("String", "SERVER_IP",
+            "\"" + ourbook("ourbook.ip", "203.0.113.10") + "\"")
+        buildConfigField("int", "SERVER_PORT",
+            ourbook("ourbook.port", "6080"))
     }
 
     buildTypes {
@@ -38,7 +54,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
-        // AGP 8 부터 기본 비활성. BuildConfig.DEBUG 로 로깅 수준을 가르기 위해 켠다
+        // AGP 8 부터 기본 비활성. BuildConfig.DEBUG 와 서버 주소를 넘기기 위해 켠다
         buildConfig = true
     }
     kotlinOptions {

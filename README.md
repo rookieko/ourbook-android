@@ -23,6 +23,14 @@
 |---|---|---|
 | ![채팅방](docs/screenshots/05_chat_rooms.png) | ![실시간 채팅](docs/screenshots/09_chat_realtime.png) | ![프로필](docs/screenshots/07_profile.png) |
 
+| 작품 등록 (작가 모드) | | |
+|---|---|---|
+| ![작품 등록](docs/screenshots/04_write_new_book.png) | | |
+
+독자와 작가가 같은 앱을 씁니다. 작가 모드에서 작품을 등록하고 회차를 올립니다.
+이 경로를 받는 서버 엔드포인트에는 인가 검사가 없었고([IDOR](https://github.com/rookieko/ourbook-server#1-작가-모드-3개-엔드포인트에-인가-검사가-없었다-idor)),
+2026년 정리에서 소유권 검사를 넣었습니다.
+
 채팅 화면의 아래 세 메시지는 **2026-09-04 에 실제로 주고받은 것**입니다. 그 위는 2024년 이력이고,
 가운데 날짜 구분선이 둘을 나눕니다.
 
@@ -84,12 +92,22 @@ UI         Material 3 · ViewBinding · RecyclerView · Navigation
 
 ### 1. 서버 주소 설정
 
-저장소에는 실제 주소가 들어 있지 않습니다. 두 곳을 자신의 서버로 바꾸세요.
+저장소에는 실제 주소가 들어 있지 않습니다. 소스를 고칠 필요는 없고 `local.properties` 한 곳만 채우면 됩니다.
 
-```text
-app/src/main/java/com/example/ourbook/DataTool/BaseUrl.java   BASE_URL
-app/src/main/java/com/example/ourbook/Constants.java          SERVER_IP · SERVER_PORT
+```bash
+cp local.properties.example local.properties
 ```
+
+```properties
+ourbook.host=http://your-server-host.example.com/   # PHP REST API. 끝 슬래시 유지
+ourbook.ip=203.0.113.10                             # Raw TCP 채팅 서버 (IP)
+ourbook.port=6080
+```
+
+`local.properties` 는 `.gitignore` 에 있어 커밋되지 않습니다. 값은 `build.gradle.kts` 의 `buildConfigField` 를 거쳐 `BuildConfig` 로 들어가고, `BaseUrl` 과 `Constants` 가 그것을 참조합니다.
+
+> **값을 빼거나 키를 틀려도 빌드는 성공합니다.** placeholder 로 APK 가 만들어질 뿐입니다.
+> 앱은 뜨는데 로그인만 안 된다면 여기부터 확인하세요.
 
 ### 2. 빌드
 
@@ -125,10 +143,6 @@ app/src/main/java/com/example/ourbook/Constants.java          SERVER_IP · SERVE
 
 전송은 성공하고 서버에 저장되지만(FCM 응답으로 확인), 보낸 사람의 RecyclerView 가 바로 갱신되지 않습니다. 방을 다시 들어가면 보입니다.
 
-### 서버 주소가 소스에 하드코딩돼 있습니다
-
-`BuildConfig` 주입으로 빼는 것이 맞습니다. 이번 정리에서는 우선순위를 낮게 두어 placeholder 로만 바꿨습니다.
-
 ---
 
 ## 2026년 정리에서 고친 것
@@ -140,3 +154,4 @@ app/src/main/java/com/example/ourbook/Constants.java          SERVER_IP · SERVE
 | 릴리스 빌드에서도 요청/응답 본문 전체가 Logcat 에 남음 | `BuildConfig.DEBUG` 로 로깅 레벨 분기 |
 | 로그인 시 응답 키를 전부 Logcat 에 출력하는 루프 | 제거 |
 | `ChatListenService` 가 `exported="true"` | `false` 로 변경 |
+| 서버 주소가 소스 두 곳에 하드코딩돼, 서버가 바뀔 때마다 소스를 고쳐 재빌드해야 함 | `local.properties` → `buildConfigField` → `BuildConfig` 주입으로 분리 |
