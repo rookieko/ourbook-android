@@ -269,8 +269,11 @@ public class ReviewInputActivity extends AppCompatActivity {
 
     /* 툴팁 풍선 - 리뷰 점수 안내 */
         Context context = this;
-        String tooltip_text = Resources.getSystem().getString(R.string.tooltip_review);
-        tooltip_text ="<strong>(글쓰기 품질)</strong>: 문장 구성, 전반적인 문체 등 작가의 글쓰기 기술을 평가합니다.<br/>" +
+        // Resources.getSystem() 은 프레임워크 리소스만 안다 — 앱의 R.string.tooltip_review 를
+        // 찾지 못해 Resources$NotFoundException 이 나고 화면 진입이 통째로 막혔다.
+        // 읽어온 값은 바로 아래에서 덮어써져 쓰이지도 않았으므로 호출 자체를 제거한다.
+        // (표시되는 문구는 아래 HTML 리터럴이다. strings.xml 쪽은 <strong> 없는 옛 평문판)
+        String tooltip_text ="<strong>(글쓰기 품질)</strong>: 문장 구성, 전반적인 문체 등 작가의 글쓰기 기술을 평가합니다.<br/>" +
                 "<strong>(업데이트 안정성)</strong>: 작가가 얼마나 규칙적으로 새로운 챕터나 섹션을 게시하는지를 평가합니다.<br/>" +
                 "<strong>(이야기 전개)</strong>: 플롯의 진행 방식, 이야기의 구조, 서사의 흐름 등 이야기가 얼마나 잘 전개되는지를 나타냅니다.<br/>" +
                 "<strong>(캐릭터 디자인)</strong>: 캐릭터의 복잡성, 캐릭터가 얼마나 잘 만들어졌고, 생생하게 묘사되었는지를 의미합니다.<br/>" +

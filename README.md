@@ -23,6 +23,10 @@
 |---|---|---|
 | ![채팅방](docs/screenshots/05_chat_rooms.png) | ![실시간 채팅](docs/screenshots/09_chat_realtime.png) | ![프로필](docs/screenshots/07_profile.png) |
 
+| 리뷰 작성 | 리뷰 목록 | 리뷰 상세 |
+|---|---|---|
+| ![리뷰 작성](docs/screenshots/10_review_input.png) | ![리뷰 목록](docs/screenshots/11_comment_list.png) | ![리뷰 상세](docs/screenshots/12_review_detail.png) |
+
 | 작품 등록 (작가 모드) | | |
 |---|---|---|
 | ![작품 등록](docs/screenshots/04_write_new_book.png) | | |
@@ -84,6 +88,28 @@ UI         Material 3 · ViewBinding · RecyclerView · Navigation
 
 ![알림 권한](docs/screenshots/02_notification_permission.png)
 
+### 4. 리뷰·평점 — 다축 평가와 트리거 집계
+
+한 편의 작품을 **다섯 축으로 나눠 평가**합니다 — 이야기 전개 · 캐릭터 디자인 · 세계 배경 ·
+글쓰기 품질 · 업데이트 안정성. 종합 점수는 입력하는 게 아니라 다섯 축에서 계산돼 실시간으로 바뀝니다.
+
+클라이언트가 붙는 엔드포인트는 7개이고, 화면은 세 개로 나뉩니다.
+
+| 화면 | 하는 일 |
+|---|---|
+| `ReviewInputActivity` | 다축 평점 입력 · 재평가(수정) · 최소 20자 검증 |
+| `CommentShowActivity` | 작품별 리뷰 목록 · 평점 통계 · 정렬 · 좋아요 |
+| `ReviewInfoActivity` | 리뷰 상세 · 좋아요 토글 |
+
+서버 쪽이 더 볼 만합니다. 다섯 축 점수와 본문이 **한 트랜잭션**으로 들어가고, 재평가는
+`ON DUPLICATE KEY UPDATE` 로 덮어쓰며, 리뷰 좋아요 집계는 애플리케이션이 아니라
+**DB 트리거**가 갱신합니다. 자세한 내용은
+[서버 저장소](https://github.com/rookieko/ourbook-server#리뷰평점--다축-평가와-트리거-집계)에 적었습니다.
+
+**작은 설계 판단 하나** — 리뷰 작성 버튼은 그 작품을 실제로 읽은 사람에게만 열립니다
+(`BookInfoActivity` 가 「이어서 보기」 활성화 여부로 판단). 다만 이미 리뷰를 쓴 사람은
+수정할 수 있어야 하므로 그 경우는 예외로 통과시킵니다.
+
 ---
 
 ## 실행 방법
@@ -127,11 +153,18 @@ ourbook.port=6080
 
 하단 네비게이션에 항목은 있으나 `MainLoginActivity` 의 `setOnItemSelectedListener` 에 `R.id.tab_library` 분기가 없습니다. 탭해도 아무 일도 일어나지 않고 홈이 유지됩니다.
 
-### 작품 상세의 조회수·평점이 채워지지 않습니다
+### 작품 상세의 **조회수**가 채워지지 않습니다
 
 바인딩 실수가 아니라 **구현하지 않은 것**입니다. `BookInfoActivity.java:208` 에
-`// TODO 조회수 , 점수` 주석이 있고 해당 TextView 를 설정하는 코드가 없어,
-레이아웃의 정적 라벨이 그대로 보입니다. 목록 화면에서는 정상 표시됩니다.
+`// TODO 조회수 , 점수` 주석이 있고 `textViewViews` 를 설정하는 코드가 어디에도 없어,
+레이아웃의 정적 라벨 "조회수" 가 그대로 보입니다. 목록 화면에서는 정상 표시됩니다.
+
+같은 TODO 에 적힌 **평점은 이후에 구현됐습니다** — `textViewRating` 은 리뷰 응답의
+`total_score` 로 채워집니다(2026-09-07 실행 확인: 3.5 표시). TODO 주석만 그대로 남아 있어
+읽는 사람을 오해하게 만드는 쪽에 가깝습니다.
+
+**리뷰 기능 자체는 동작합니다.** 리뷰 등록·목록·상세·좋아요·평점 통계는 모두 서버와 왕복합니다.
+안 그려지는 것은 작품 상세 화면의 조회수 숫자 하나입니다.
 
 ### `ChatListenService` 는 프로토타입입니다
 
@@ -155,3 +188,9 @@ ourbook.port=6080
 | 로그인 시 응답 키를 전부 Logcat 에 출력하는 루프 | 제거 |
 | `ChatListenService` 가 `exported="true"` | `false` 로 변경 |
 | 서버 주소가 소스 두 곳에 하드코딩돼, 서버가 바뀔 때마다 소스를 고쳐 재빌드해야 함 | `local.properties` → `buildConfigField` → `BuildConfig` 주입으로 분리 |
+| **리뷰 작성 화면 진입 즉시 크래시** — `Resources.getSystem().getString(R.string.tooltip_review)` 가 `Resources$NotFoundException` (`ReviewInputActivity.java:272`) | 죽은 호출 제거 |
+
+마지막 항목은 이번 정리에서 **실행 검증 중에 찾았습니다.** `Resources.getSystem()` 은
+프레임워크 리소스만 알아서 앱의 `R.string` 을 찾지 못합니다. 읽어온 값은 바로 다음 줄에서
+하드코딩 문자열로 덮어써져 **쓰이지도 않았는데**, 그 한 줄 때문에 리뷰 작성 화면 전체가
+열리지 않았습니다. 정적 분석으로는 안 걸리고 화면을 실제로 열어야 드러나는 종류입니다.
